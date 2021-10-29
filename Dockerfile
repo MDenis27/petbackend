@@ -1,5 +1,5 @@
 # Dockerfile
-FROM python:3.9-slim
+FROM python:3.9.6-alpine3.14
 
 RUN mkdir /code
 ADD . /code/
