@@ -1,0 +1,31 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+trigger:
+  branch:
+    - master
+  event:
+    - push
+
+steps:
+  - name: conf env
+    image: python:3.9.6
+    commands:
+      - echo "DATABASE_HOST=postgre" > backEnd/.env
+      - echo "DATABASE_NAME=durban" >> backEnd/.env
+      - echo "DATABASE_USER=admin" >> backEnd/.env
+      - echo "DATABASE_PASS=python42" >> backEnd/.env
+
+  - name: build image
+    image: plugins/docker
+    settings:
+      repo: registry.maximedenis.com/durban/backend
+      cache_from: registry.maximedenis.com/durban/backend
+      registry: registry.maximedenis.com
+      tags: latest
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password

@@ -1,9 +1,18 @@
-FROM python:3.9
-ENV PYTHONUNBUFFERED 1
+# Dockerfile
 
-ADD /tancho /tancho/
-ADD requirements.txt /tancho/
+# pull the official docker image
+FROM python:3.9.4-slim
+
+# set work directory
 WORKDIR /tancho
 
-RUN pip install --upgrade pip
+# set env variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# install dependencies
+COPY requirements.txt .
 RUN pip install -r requirements.txt
+
+# copy project
+COPY . .
