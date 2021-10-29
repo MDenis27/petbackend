@@ -1,5 +1,5 @@
 # Dockerfile
-FROM python:3.9.7-buster
+FROM python:3.9.7-alpine3.14
 
 RUN mkdir /code
 ADD . /code/
