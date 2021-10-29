@@ -15,7 +15,7 @@ steps:
     #commands:
     #  - echo "DATABASE_HOST=postgre" > backEnd/.env
     #  - echo "DATABASE_NAME=durban" >> backEnd/.env
-    #  - echo "DATABASE_USER=admin" >> backEnd/.env
+    # - echo "DATABASE_USER=admin" >> backEnd/.env
     #  - echo "DATABASE_PASS=python42" >> backEnd/.env
 
   - name: build image
