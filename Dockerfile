@@ -9,7 +9,15 @@ RUN pip install --upgrade pip
 RUN apk add gcc musl-dev python3-dev libffi-dev openssl-dev cargo jpeg-dev zlib-dev
 RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
 RUN pip install wheel
-RUN pip install uvloop
+RUN git clone \
+    --recursive \
+    --branch patch-1 \
+    https://github.com/dmontagu/uvloop.git
+WORKDIR /uvloop/
+RUN pip3 install -r ./requirements.dev.txt
+RUN make -j2
+RUN pip3 install ./
+RUN rm -rf /uvloop/
 RUN pip install psycopg2
 RUN pip install -r requirements.txt
 CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "tancho.main:app", "--bind", "127.0.0.1:8004"]
