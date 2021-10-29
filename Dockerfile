@@ -6,8 +6,8 @@ ADD . /code/
 WORKDIR /code
 
 RUN pip install --upgrade pip
-RUN apk add gcc musl-dev python3-dev libffi-dev openssl-dev cargo jpeg-dev zlib-dev
-RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
+RUN apt add gcc musl-dev python3-dev libffi-dev openssl-dev cargo jpeg-dev zlib-dev
+RUN apt update && apt add postgresql-dev gcc python3-dev musl-dev
 RUN pip install wheel
 
 RUN git clone \
