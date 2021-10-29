@@ -1,5 +1,5 @@
 # Dockerfile
-FROM python:3.9.6-alpine
+FROM python:3.7.6-alpine
 
 RUN mkdir /code
 ADD . /code/
@@ -12,21 +12,3 @@ RUN pip install wheel
 RUN pip install psycopg2
 RUN pip install -r requirements.txt
 CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "tancho.main:app", "--bind", "127.0.0.1:8004"]
-
-
-# pull the official docker image
-FROM python:3.9.4-slim
-
-# set work directory
-WORKDIR /tancho
-
-# set env variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
-# install dependencies
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-
-# copy project
-COPY . .
