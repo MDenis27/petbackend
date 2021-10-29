@@ -1,0 +1,4 @@
+fastapi[all]==0.65.0
+motor==2.0.0
+passlib[bcrypt]==1.7.4
+python-jose>=3.0.0
