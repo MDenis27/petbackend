@@ -21,8 +21,8 @@ steps:
   - name: build image
     image: plugins/docker
     settings:
-      repo: registry.maximedenis.com/durban/backend
-      cache_from: registry.maximedenis.com/durban/backend
+      repo: registry.maximedenis.com/petbackend/backend
+      cache_from: registry.maximedenis.com/petbackend/backend
       registry: registry.maximedenis.com
       tags: latest
       username:
